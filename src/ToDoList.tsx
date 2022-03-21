@@ -17,7 +17,7 @@ import {
 import { SyntheticEvent, useEffect, useState } from "react";
 
 import { ToDoItem } from "./types/ToDoItem";
-import Table from "./Table";
+import Table, { TableProps } from "./Table";
 
 function ToDoList() {
   const [toDoItems, setToDoItems] = useState<ToDoItem[]>([]);
@@ -80,6 +80,18 @@ function ToDoList() {
     toggleItem();
   }
 
+  const tableHeadings = ['Done', 'Description', '']
+  const tableRows: TableProps['rows'] = toDoItems.map((item, index) => {
+    return {
+      key: item.id,
+      cells: [
+        { type: 'checkbox', checked: item.completed, onClick: () => handleToggleItem(item.id, index) },
+        { type: 'text', text: item.description },
+        { type: 'button', icon: <DeleteIcon />, onClick: () => handleDeleteItem(item.id, index) },
+      ]
+    }
+  })
+
   return (
     <>
       <Center>
@@ -88,14 +100,14 @@ function ToDoList() {
         </Box>
       </Center>
 
-      {/* <Center>
+      <Center>
         <Box width="640px">
-          <Table />
+          <Table headings={tableHeadings} rows={tableRows} />
         </Box>
-      </Center> */}
+      </Center>
       
       {/* TODO replace the following block with the <Table /> component you create */}
-      <Center alignItems="baseline">
+      {/* <Center alignItems="baseline">
         <Box width="640px">
           <List>
             <ListItem>
@@ -153,7 +165,7 @@ function ToDoList() {
             ))}
           </List>
         </Box>
-      </Center>
+      </Center> */}
 
       <Center>
         <Box p={4} width="640px" bg="gray.50">

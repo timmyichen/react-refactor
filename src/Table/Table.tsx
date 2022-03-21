@@ -17,13 +17,30 @@ import {
 } from "@chakra-ui/react";
 
 import React from "react";
+import { Cell } from "./Cell";
+import { Row } from "./types";
 
-export function Table(): React.ReactElement {
+export interface TableProps {
+  headings: string[];
+  rows: Array<Row>;
+}
+
+export function Table({ headings, rows }: TableProps): React.ReactElement {
   return (
     <CTable variant="striped">
       <Thead>
+        <Tr>
+          {headings.map(heading => (
+            <Th>{heading}</Th>
+          ))}
+        </Tr>
       </Thead>
       <Tbody>
+        {rows.map(row => (
+          <Tr key={row.key}>
+            {row.cells.map(props => <Cell props={props} />)}
+          </Tr>
+        ))}
       </Tbody>
       <Tfoot>
         <Tr>

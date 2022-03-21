@@ -13,7 +13,7 @@ import {
 import { useEffect, useState } from "react";
 
 import { User } from "./types/User";
-import Table from "./Table";
+import Table, { TableProps } from "./Table";
 
 function Users() {
   const [users, setUsers] = useState<User[]>([]);
@@ -25,7 +25,20 @@ function Users() {
       if (data) setUsers(data);
     }
     getUsers();
-  });
+  }, []);
+
+  const tableHeadings = ['Image', 'Name', 'Email', 'Followers']
+  const tableRows: TableProps['rows'] = users.map(user => {
+    return {
+      key: user.id,
+      cells: [
+        { type: 'image', src: user.avatarUrl },
+        { type: 'text', text: user.username, style: { textTransform: 'capitalize'} },
+        { type: 'text', text: user.email, href: `mailto:${user.email}` },
+        { type: 'text', text: user.followers.length },
+      ]
+    }
+  })
 
   return (
     <>
@@ -35,14 +48,14 @@ function Users() {
         </Box>
       </Center>
 
-      {/* <Center>
+      <Center>
         <Box width="640px">
-          <Table />
+          <Table headings={tableHeadings} rows={tableRows} />
         </Box>
-      </Center> */}
+      </Center>
 
       {/* TODO replace the following block with the <Table /> component you create */}
-      <Center>
+      {/* <Center>
         <Box width="640px">
           <List>
             <ListItem>
@@ -104,7 +117,7 @@ function Users() {
             ))}
           </List>
         </Box>
-      </Center>
+      </Center> */}
     </>
   );
 }
