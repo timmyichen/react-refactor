@@ -27,7 +27,7 @@ export function Table(): React.ReactElement {
       </Tbody>
       <Tfoot>
         <Tr>
-        <Td colSpan={2}>
+          <Td colSpan={2}>
             <Flex justifyContent="center">
               <InputGroup>
                 <InputLeftElement pointerEvents="none"><SearchIcon /></InputLeftElement>

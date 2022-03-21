@@ -25,7 +25,7 @@ function Users() {
       if (data) setUsers(data);
     }
     getUsers();
-  });
+  }, []);
 
   return (
     <>
