@@ -111,67 +111,6 @@ function ToDoList() {
         </Box>
       </Center>
       
-      {/* TODO replace the following block with the <Table /> component you create */}
-      {/* <Center alignItems="baseline">
-        <Box width="640px">
-          <List>
-            <ListItem>
-              <Flex alignItems="center" color="gray.600" fontWeight={600}>
-                <Text
-                  fontSize={12}
-                  px={6}
-                  py={3}
-                  textTransform="uppercase"
-                  width={100}
-                >
-                  Done
-                </Text>
-                <Text fontSize={12} px={6} py={3} textTransform="uppercase">
-                  Description
-                </Text>
-                <Text
-                  fontSize={12}
-                  px={6}
-                  py={3}
-                  textTransform="uppercase"
-                ></Text>
-              </Flex>
-            </ListItem>
-            {toDoItems.map((item, index) => (
-              <ListItem key={item.id}>
-                <Flex
-                  alignItems="center"
-                  bg={index % 2 === 0 ? "gray.100" : "white"}
-                >
-                  <Checkbox
-                    isChecked={item.completed}
-                    onChange={() => handleToggleItem(item.id, index)}
-                    width={100}
-                    px={6}
-                    py={4}
-                  />
-                  <Text fontSize={16} px={6} py={4}>
-                    {item.description}
-                  </Text>
-                  <Spacer />
-                  <Box px={6} py={4}>
-                    <IconButton
-                      icon={<DeleteIcon />}
-                      aria-label="Delete this item"
-                      onClick={() => handleDeleteItem(item.id, index)}
-                      size="xs"
-                      background="gray.600"
-                      _hover={{ bg: "red.600" }}
-                      color="white"
-                    />
-                  </Box>
-                </Flex>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      </Center> */}
-
       <Center>
         <Box p={4} width="640px" bg="gray.50">
           <form onSubmit={handleSubmitNewItem}>
