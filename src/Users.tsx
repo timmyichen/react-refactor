@@ -27,7 +27,13 @@ function Users() {
     getUsers();
   }, []);
 
-  const tableHeadings = ['Image', 'Name', 'Email', 'Followers']
+  const tableHeadings: TableProps['headings'] = [
+    'Image',
+    'Name',
+    'Email',
+    'Followers',
+  ];
+
   const tableRows: TableProps['rows'] = users.map(user => {
     return {
       key: user.id,

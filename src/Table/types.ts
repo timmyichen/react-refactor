@@ -2,7 +2,6 @@ import React from "react";
 
 // for any props common to every cell
 interface CommonCell {
-  searchable?: boolean;
   style?: React.CSSProperties;
 }
 

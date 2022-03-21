@@ -80,7 +80,12 @@ function ToDoList() {
     toggleItem();
   }
 
-  const tableHeadings = ['Done', 'Description', '']
+  const tableHeadings: TableProps['headings'] = [
+    'Done',
+    'Description',
+    '',
+  ];
+
   const tableRows: TableProps['rows'] = toDoItems.map((item, index) => {
     return {
       key: item.id,
@@ -102,7 +107,7 @@ function ToDoList() {
 
       <Center>
         <Box width="640px">
-          <Table headings={tableHeadings} rows={tableRows} />
+          <Table headings={tableHeadings} rows={tableRows} pageSize={3} />
         </Box>
       </Center>
       
